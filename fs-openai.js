@@ -50,7 +50,7 @@ const { blob } = require('stream/consumers');
     }
 
     const audioFilePath = 'audio.mp3'; // Ruta al archivo de audio
-    const openaiApiKey = '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';
+    //const openaiApiKey = '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';
 
     transcribeAudio(audioFilePath, openaiApiKey)
         .then(transcription => {

@@ -26,5 +26,23 @@ console.log(`Versión de brotli: ${process.versions.brotli}`);
 console.log(`Versión de c-ares: ${process.versions.cares}`);
 console.log(`Versión de modules: ${process.versions.modules}`);
 
+process.on('exit', code => {
+    console.log('El proceso ha finalizado.', code);
+});
 
+process.on('SIGHT', ()=>{
+    console.log('Se recibio la señal de interrupción (Control+C).')
+    process.exit(0);
+});
 
+console.log('Escribe algo y presiona Enter o control+C para salir');
+process.stdin.on('data', data => {
+    const input = data.toString().trim();
+    if (input.toLowerCase() === 'salir') {
+        console.log('Comando de salida recibido');
+        process.exit(0);
+    } else {
+        console.log(`Mensaje: ${input}`);
+        console.log('Escribe "Salir" para finalizar el proceso o escribe algo más');
+    }
+});
