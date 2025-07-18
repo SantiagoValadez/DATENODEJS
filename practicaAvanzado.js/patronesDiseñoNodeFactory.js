@@ -4,6 +4,19 @@
 // clase concreta instanciar. En lugar de utilizar constructores directamente, se delega la creación de objetos a una fábrica, lo que facilita la extensibilidad
 // y la flexibilidad del código. 
 
+
+
+// -------------------> 
+// ¿Qué es el patrón Factory y por qué usarlo?
+// A diferencia del Singleton, el patrón Factory permite instanciar múltiples objetos, diseñados a partir de una clase específica. Es ampliamente usado
+// en frameworks y herramientas para simplificar el proceso de creación de objetos robustos sin exponer la lógica compleja detrás.
+
+// ¿Cómo aplicar el patrón Factory en JavaScript?
+// Una implementación sencilla implica:
+
+// Tener una clase base (por ejemplo, Pet).
+// adicionar una clase separada (Factory) que maneje la instanciación de múltiples objetos.
+
  class Pet { // se le aseigna un nombre a la clase. Este caso el nombre Pet
     constructor (name){ // Recibe unn parametro name y lo asigna como propiedad del objeto
         this.name = name; // toma el valor del parametro y lo guarda como propiedad del obajeto con el nombre "name"
