@@ -22,7 +22,7 @@
 
 const promise = new Promise ((resolve, reject) => {
     setTimeout(() => {
-        let operationSuccessfull = true;
+        let operationSuccessfull = false; // Cambia a true para simular una operación exitosa
         if (operationSuccessfull){
             resolve('La operacion fue exitosa');
         } else {

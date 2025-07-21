@@ -23,3 +23,35 @@ class Logger {
 }
 
 module.exports = Logger; // Se exporta la clase, lo que permite usar la clase "Logger" en otros archivos usando: rquire('./Logger')
+
+
+
+
+
+
+
+
+
+class Logger {
+    constructor (){ 
+        if(!Logger.instance){ 
+            Logger.instance = this; 
+        }
+        this.logs = []; 
+        return Logger.instance; 
+    }
+    // Metodo Logs
+    log (message) {
+        const timesStamp = new Date().toISOString(); 
+        this.logs.push(`${timesStamp}:${message}`); 
+        console.log (`${timesStamp}:${message}`); 
+    }
+
+// Metodo getLogs
+    getLogs(){
+        return this.logs; 
+    }
+}
+
+module.exports = Logger; 
+

@@ -1,6 +1,6 @@
 // combinacion de patrones de diseño. Singleton y Factory para crear un logger.
 
-const Logger = require ('./logger') // Se importa docuemnto de "Logger" En este nuevo documento, para poder tener acceso a el
+const Logger = require ('./CombinacionSingleton') // Se importa docuemnto de "Logger" En este nuevo documento, para poder tener acceso a el
 
 const loggerInstance = new Logger (); // se hace instancia de la clase "Logger"
 

@@ -1,0 +1,71 @@
+Resumen
+
+El patrón --MIDDLEWARE-- es fundamental en el ecosistema de Node.js y especialmente utilizado por el framework Express. Este patrón permite ejecutar una secuencia
+ordenada de funciones, conocidas como middlewares, sobre cada petición (request) recibida. Cabe destacar que cada middleware puede modificar los objetos recibidos
+y decidir si continuar o detener la ejecución secuencialmente.
+
+¿Qué es el patrón middleware en Node.js?
+El middleware es un patrón que facilita ejecutar una serie de acciones secuencialmente durante la gestión de una petición en aplicaciones Node.js.
+Aunque popular por su uso en Express, este patrón puede implementarse fácilmente en aplicaciones puras de Node.js, sin necesidad del framework específico.
+
+Cada middleware:
+
+Recibe generalmente tres parámetros principales:
+El objeto de petición (request).
+El objeto de respuesta (response).
+Una función llamada next que continúa la cadena de ejecución.
+Realiza tareas específicas como autenticación, validación o procesamiento.
+Puede modificar los objetos recibidos antes de pasar al siguiente middleware.
+¿Cómo implementar middlewares sin Express?
+Para demostrar el funcionamiento de middleware sin utilizar Express, se puede crear una función propia llamada runMiddlewares. A continuación, se describe
+paso a paso cómo hacerlo en una aplicación sencilla Node.js.
+
+Creación de la función runMiddlewares
+Inicialmente, es imprescindible definir una función como la siguiente:
+
+const runMiddlewares = (req, res, middlewares) => {
+  let index = 0;
+  const next = () => {
+    if (index < middlewares.length) {
+      const middleware = middlewares[index++];
+      middleware(req, res, next);
+    }
+  };
+
+  next();
+};
+Esta función:
+
+Toma como argumentos el objeto request, el objeto response y un arreglo de funciones middleware.
+Ejecuta cada middleware incrementando un índice para avanzar en la secuencia.
+Utiliza recursion con la función next para controlar el flujo.
+¿Cómo definir y ejecutar varios middlewares?
+A continuación, definimos diferentes middlewares simulando tareas prácticas habituales en una solicitud HTTP.
+
+const middlewareUno = (req, res, next) => {
+  console.log('autenticación de la solicitud');
+  next();
+};
+
+const middlewareDos = (req, res, next) => {
+  console.log('procesamiento de la petición');
+  next();
+};
+
+const middlewareTres = (req, res, next) => {
+  console.log('finalización');
+  next();
+};
+Posteriormente, ejecutas la función:
+
+const req = {};
+const res = {};
+
+runMiddlewares(req, res, [middlewareUno, middlewareDos, middlewareTres]);
+Al lanzar este script, verás en la consola los mensajes indicando la ejecución secuencial de cada middleware.
+
+¿Cómo implementar middlewares condicionales?
+Un middleware puede decidir, según ciertas condiciones establecidas en tiempo de ejecución, si continúa ejecutándose la cadena de middlewares siguientes o no.
+Como ejercicio, puedes añadir un cuarto middleware cuya ejecución dependerá de la lógica definida en el middleware anterior.
+
+Este tipo de lógica ayuda a gestionar adecuadamente diferentes escenarios que podrían surgir en el ciclo de vida de una petición web.
