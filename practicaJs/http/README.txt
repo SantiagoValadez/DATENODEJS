@@ -1,5 +1,5 @@
 Resumen
-
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️<----------------- UTILIZANDO EL METODO GET ------------------------------->⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 ¿Cómo hacer peticiones HTTP escalables en JavaScript?
 Las peticiones HTTP son fundamentales para la interacción con servidores y APIs, un proceso esencial en la creación de aplicaciones web.
 Implementar estas peticiones de manera eficiente puede marcar una gran diferencia en el rendimiento general de una aplicación. 
@@ -67,7 +67,7 @@ y escalables. A través de la práctica continua, dominarás la manipulación de
 
 
 
------------> EJEMPLO PRACTICO DE LA ESTRUCTURA DE UN PROTOCOLO HTTP <--------------
+-----------> EJEMPLO PRACTICO DE LA ESTRUCTURA DE UN PROTOCOLO HTTP PARA CONSEGUIR ALGUN DATO DEL SEVIDOR <--------------
 
 En este ejemplo cual es body, encabezado y la linea de inicio ?
 
@@ -81,3 +81,73 @@ Content-Length: 48                  <--------- Content lenght. (Indica cuantos b
   "usuario": "santiago",            <-------- Aqui comienza el body (Este es el contenido que se envia al servidor, por ejemplo para iniciar sesión).
   "password": "1234"
 }
+
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️<----------------- UTILIZANDO EL METODO POST ------------------------------->⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+
+
+
+¿Cómo enviar información desde un formulario web sin refrescar la página?
+Enviar datos de un formulario web sin que la página se recargue es un desafío común en el desarrollo front-end. Aquí exploramos cómo lograrlo utilizando JavaScript
+ para manejar eventos del formulario, estructurar datos y enviarlos al servidor. ¡Acompáñame y lo descubriremos juntos!
+
+¿Cómo prevenir el refresco de página en un formulario?
+Un problema común al enviar formularios es que la página se actualiza, perdiendo datos temporales o interrumpiendo experiencia del usuario. Para evitarlo:
+
+Escuchar el evento submit: Utilizamos addEventListener en el formulario para capturar cuando el usuario intenta enviar datos.
+Prevenir comportamiento predeterminado: Usamos event.preventDefault() para evitar que la página se recargue al enviar el formulario.
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Código para manejar el formulario
+});
+¿Cómo capturamos los datos del formulario?
+Una vez que el refresco está prevenido, necesitamos acceder a los valores del formulario:
+
+Obtener los elementos del formulario: Usamos querySelector para encontrar elementos por su ID.
+Capturar datos ingresados: Accedemos a value del elemento para conseguir el texto ingresado por el usuario.
+const title = event.currentTarget.querySelector('#title').value;
+const content = event.currentTarget.querySelector('#content').value;
+¿Cómo estructurar y enviar un objeto de datos al servidor?
+Antes de enviar los datos, debemos estructurarlos en un objeto que el servidor espera recibir:
+
+Crear un User ID aleatorio: Generamos un número para simular un identificador de usuario.
+Estructurar los datos: Creamos un objeto con el título, contenido y userID.
+Hacer la función async: Facilitamos la ejecución del fetch.
+async function createPost(title, content) {
+   const userID = Math.floor(Math.random() * 1000);
+   const post = {
+      title,
+      body: content,
+      userId: userID
+   };
+
+   // Hacer un request al servidor
+}
+¿Cómo enviamos un request POST con fetch?
+La clave es usar fetch para enviar un request POST con el objeto de datos:
+
+Especificar método y URL: Definimos el método POST y apuntamos a la URL correcta.
+Incluir el cuerpo de la petición: Añadimos nuestro objeto de datos estructurado en JSON.
+async function createPostRequest(post) {
+    const response = await fetch('URL_DEL_SERVIDOR', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+    });
+    
+    if (response.ok) {
+        console.log('Post creado exitosamente');
+    } else {
+        console.error('Error al crear el post');
+    }
+}
+¿Cómo vinculamos el envío del formulario con nuestra función?
+Finalmente, debemos ejecutar nuestra función de envío dentro del controlador de eventos del formulario.
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const title = event.currentTarget.querySelector('#title').value;
+    const content = event.currentTarget.querySelector('#content').value;
+    createPostRequest({ title, content });
+});
