@@ -5,9 +5,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["date", "nodejs"],
+  "keywords": [
+    "date",
+    "nodejs"
+  ],
   "author": "Santiago Valadez <saniago1340@gmail.com>",
   "license": "MIT",
   "type": "commonjs",
-  "description": "Una utilidad para manejar fechas en formato timestamp y long time."
+  "description": "Una utilidad para manejar fechas en formato timestamp y long time.",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
