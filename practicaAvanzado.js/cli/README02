@@ -1,0 +1,121 @@
+Resumen
+
+¿Qué herramientas básicas necesitas para crear un CLI en Node.js?
+Crear tu propia interfaz de línea de comandos (CLI) puede ser sencillo si conoces algunas herramientas básicas. En Node.js, puedes comenzar
+utilizando Minimist para manejar y analizar argumentos. Es ligera, fácil de implementar, pero ten en cuenta que para proyectos muy 
+complejos podría no ser suficiente.
+
+¿Qué diferencias hay entre librería y framework para CLI?
+Debes decidir cuidadosamente entre una librería y un framework:
+
+Librería: ofrece funcionalidades específicas y generalmente se integran fácilmente con otras utilidades.
+Framework: impone una estructura más rígida y predefinida, proporcionando una solución completa que incluye definición de comandos, ayuda integrada y manejo avanzado.
+Frameworks populares en Node.js:
+
+Commander: facilita definición y manejo claro de comandos.
+OCREEF: ofrece diversas utilidades avanzadas.
+¿Cómo mejorar la interacción y apariencia de tu CLI?
+Utilizar módulos adicionales puede mejorar significativamente la experiencia del usuario y presentación de tu CLI:
+
+Inquirer: permite gestionar múltiples tipos de entradas como preguntas simples, selección múltiple y menús interactivos.
+Loaders: dan retroalimentación visual durante procesos asíncronos, mejorando la claridad del estado actual del CLI.
+Colorette: posibilita imprimir texto coloreado facilmente para destacar y diferenciar salidas en terminal.
+¿Cómo integrar Gemini AI con tu CLI?
+Para proveer funcionalidades avanzadas como asistentes inteligentes, tienes la opción de integrar Gemini AI utilizando el módulo @google/generative-ai. Debes seguir estos pasos:
+
+Obtener la API Key en AIStudio.google.com después de iniciar sesión con una cuenta Google.
+Instalar e importar el módulo respectivamente con:
+pnpm add @google/generative-ai
+Validar la existencia de la variable de entorno Gemini_API_KEY en tu script Node.js.
+Definir claramente el System Prompt para orientar la interacción de la inteligencia artificial.
+Un ejemplo básico para iniciar el modelo Gemini AI:
+
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const systemPrompt = "Soy un profesor de Platzi, experto en Node.js y JavaScript, y solo puedo responder preguntas sobre estos temas.";
+const ai = new GoogleGenerativeAI(process.env.Gemini_API_KEY);
+const model = ai.getGenerativeModel({
+  model: 'gemini-1.5-flash',
+  systemInstruction: systemPrompt,
+});
+De esta manera, tienes armado el esqueleto básico de un CLI eficiente, dinámico y altamente interactivo utilizando herramientas accesibles y potentes en Node.js.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Resumen
+
+Crear un asistente de inteligencia artificial con Node.js es una tarea atractiva para desarrolladores que desean aprender y aplicar IA en proyectos reales. La implementación requiere construir un historial de interacciones y generar respuestas contextuales mediante Google Generative AI, manipulando configuraciones como temperatura y cantidad máxima de tokens para respuestas más relevantes y enfocadas.
+
+¿Cómo definir un historial efectivo para la IA?
+El historial de interacciones es esencial para dar contexto a la inteligencia artificial sobre conversaciones anteriores:
+
+Inicializa un arreglo vacío destinado a almacenar las interacciones.
+Cada interacción debe incluir "roll" (user o model) y "content" (mensaje generado).
+Usa el formato requerido por Google Generative AI, incorporando todos los elementos en un arreglo anidado llamado "parts", con objetos "text".
+Ejemplo del formato requerido:
+
+history = conversation.map(item => ({
+  roll: item.roll,
+  parts: [{ text: item.content }]
+}))
+¿Qué parámetros ajustar para mejorar la generación?
+La generación del modelo de IA puede ser refinada ajustando estos parámetros específicos:
+
+Temperatura: Regula la creatividad del modelo. Una temperatura más alta genera más creatividad, mientras que una más baja ofrece respuestas más predecibles.
+Max output tokens: Limita la longitud de las respuestas, previniendo respuestas demasiado extensas o irrelevantes.
+Ejemplo:
+
+config: {
+  temperature: 0.7,
+  maxOutputTokens: 1000
+}
+¿Cómo capturar, procesar y manejar los inputs del usuario?
+Para interactuar en vivo con usuarios se emplea la biblioteca "Inquirer":
+
+Captura la entrada del usuario y la agrega a la historia.
+Emplea "Ora" para mostrar un spinner visual que indica procesamiento.
+Después de generar la respuesta con la IA, muestra el resultado claramente identificado (usuario o asistente) con colores distintivos utilizando bibliotecas como "Colorate".
+Ejemplo de captura e impresión del mensaje:
+
+const userInput = await prompt({
+  name: "user_input",
+  message: args.name + ":",
+  prefix: "",
+});
+
+history.push({ role: "user", content: userInput });
+¿Cómo gestionar errores y excepciones?
+Es clave anticipar y manejar situaciones inesperadas de manera efectiva:
+
+Utiliza bloques de código "try-catch".
+Detecta errores específicos (por ejemplo, salida abrupta con Ctrl+C).
+Proporciona mensajes informativos al usuario para ofrecer una mejor experiencia en casos excepcionales.
+Ejemplo para gestionar interrupciones (Ctrl+C):
+
+if (error.name === "ExitPromptError") {
+  process.exit();
+}
+Incorporar correctamente estos pasos asegura la creación efectiva y eficiente de un chat asistente impulsado por inteligencia artificial en Node.js. ¿Cómo te gustaría ampliar o adaptar este código en tus proyectos futuros? ¡Comparte tus ideas!
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------> Anexos <-----------------
+
+// se requiere utilizar la libreria minimist. La cual es una libreri ade nodejs, que sirve para analizar argumentos de la linea de comandos.
+// Comando para añadir minimist. pnpm add minimist
+// con el comando "pnpm intit" siendo ejecutado desde la cosnola, se puede crear un archivo package.json
+// #!/usr/bin/env node-- Se debe de usar al inicio del archivo para que el sistema operativo sepa que debe usar Node.js para ejecutar este script.
+// chmod +x hello-cli.js Esto hace que el archivo sea ejecutable en sistemas Unix/Linux
+// 1. Para ejecutar el script, usa el comando: ./nombreDelArchivo.js
+// se ejecuta linea de comandos de manera de ejemplo : ./nice-cli.js --nombre=santiago --rol=developer --c=colimasoft --s
+// pnpm add colorette ------> Esta funcion sirve para añadir colores al texto de la terminal y que visualmente se vea mejor.
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------
+// pnpm add inquirer ora --------------> Inquirer y Ora son dos paquetes npm populares utilizados en aplicaciones Node.js para mejorar la
+// interfaz de línea de comandos (CLI). Inquirer se utiliza para crear preguntas interactivas y recopilar la entrada del usuario, mientras
+//  que Ora se utiliza para mostrar indicadores de carga visualmente atractivos durante las operaciones de larga duración. 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// pnpm add @google/generative-ai ---------> es un paquete de Node.js que proporciona acceso a la API de Google Generative AI

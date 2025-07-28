@@ -11,6 +11,10 @@
   "license": "ISC",
   "packageManager": "pnpm@10.13.1",
   "dependencies": {
-    "minimist": "^1.2.8"
+    "@google/generative-ai": "^0.24.1",
+    "colorette": "^2.0.20",
+    "inquirer": "^12.9.0",
+    "minimist": "^1.2.8",
+    "ora": "^8.2.0"
   }
 }
