@@ -1,3 +1,5 @@
+#!/usr/bin/env node -----> indica que ela rchivo sera ejecutado con node
+
 // 1.-Este script es un CLI interactivo que:
 // 2.-Pide una API key y nombre del usuario.
 // 3.-Inicia una conversación con Gemini.
@@ -151,4 +153,5 @@ process.on('uncaughtException', (error)=> {
 
 // pnpm add @google/generative-ai ---------> es un paquete de Node.js que proporciona acceso a la API de Google Generative AI
 // Este es el comando que se necisa para poder correr el programa desde la terminal:
-// GEMINI_API_KEY=AIzaSyBJKgqUYXeGQLXE8zNpDQoo-C-Lq9JN58s node ai-assistant.js 
+// GEMINI_API_KEY=AIzaSyBJKgqUYXeGQLXE8zNpDQoo-C-Lq9JN58s node ai-assistant.js --name=Santiago
+// para obtener una API key de gemini, se adquiere en la pagina de aistudio en siguiente link: https://aistudio.google.com/apikey
