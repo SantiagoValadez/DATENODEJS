@@ -38,7 +38,7 @@ Una técnica útil es tomar múltiples snapshots y compararlos entre sí para de
 
 ¿Cómo solucionas el memory leak detectado?
 El problema identificado en esta práctica ocurre porque la función listener mantiene una referencia al objeto request, lo que impide que el garbage
- collector libere dicha memoria una vez terminada la petición. Para resolver este inconveniente práctico:
+collector libere dicha memoria una vez terminada la petición. Para resolver este inconveniente práctico:
 
 Evitar referenciar objetos de solicitudes (request) en variables o estructuras externas que persistan más allá del ciclo de vida del mismo.
 Reemplazar referencias directas a objetos complejos por elementos primitivos (como strings) cuando sea posible.

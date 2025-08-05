@@ -14,6 +14,7 @@
   "type": "commonjs",
   "description": "Una utilidad para manejar fechas en formato timestamp y long time.",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "lru-cache": "^11.1.0"
   }
 }
