@@ -18,6 +18,7 @@ Promise.resolve().then(()=>{
     console.log ('Microtarea 1'); //MicroTarea de webAPI con una promesa
 });
 
+
 console.log ('Tarea 3'); // Tarea de javaScript
 
 // --------------------------------> segundo ejercicio <---------------------------------------------
