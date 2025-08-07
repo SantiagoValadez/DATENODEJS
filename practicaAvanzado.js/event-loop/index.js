@@ -10,6 +10,7 @@
 
 console.log ('Tarea 1');// tarea de javaScript
 
+
 setTimeout(()=>{
     console.log ('Tarea 2'); // Tareas de webAPI
 }, 0);
