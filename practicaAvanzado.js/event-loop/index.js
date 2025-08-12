@@ -1,5 +1,4 @@
 
-
 // 1- Tareas de JavaScript 
 // 2- Microtareas de webAPI
 // 3- Tareas webAPI
@@ -12,9 +11,11 @@
 console.log ('Tarea 1');// tarea de javaScript
 
 
+
 setTimeout(()=>{
     console.log ('Tarea 2'); // Tareas de webAPI
 }, 0);
+
 
 Promise.resolve().then(()=>{
     console.log ('Microtarea 1'); //MicroTarea de webAPI con una promesa
