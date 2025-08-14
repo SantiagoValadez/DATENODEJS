@@ -41,6 +41,7 @@ setImmediate(()=>{ // Se declara como un callback. P?ero al ser un setImmediate.
     console.log('Ejecutando setImmediate() callback')
 })
 
+
 const fs = require ('node:fs')
 
 fs.readFile(__filename, 'utf8', (err, data)=>{ // se creo una función que lee su propio archivo. Al no ser un setTime, tiene el segundo lugar en el orden de prioridad en javaScript
