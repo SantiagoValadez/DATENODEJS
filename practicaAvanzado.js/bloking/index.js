@@ -1,5 +1,6 @@
 // Ejercicio con uso del framework express
 
+
 // se ocupa instalar autocannon //autocannon -a 20 http://localhost:3000/fast (para empezar a hacer pruebas de carga)
 // Se ocupa instalar express 
 // se ocupa instalar pnpm  (Ejemplo de como inicializar las pruebas de procesos, utilizando Nsolid) -npx nsolid-quickstart --saas 'OLOS)Za6Fv?A@zor)iF^u}0X::?+fyayCv0&HbB15a43b285-b5e5-4e81-9023-6a4b01700d2f.prod.proxy.saas.nodesource.io:9001' --exec index.js
