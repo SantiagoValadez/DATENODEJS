@@ -30,6 +30,7 @@ console.log ('Tarea 3'); // Tarea de javaScript
 console.log ('Inicio del script'); // Se puede considerar como una tarea nativa de javaScript. Por lo que tiene prioridad en el orden de ejecución
 
 
+
 process.nextTick(() =>{ // se comporta de manera similar a una promesa, pero es una función que permite posponer su ejecución hasta despues de que la operación. actual del stack finalice.
     console.log('Ejecutando process.nextTick() microtask')
 })
