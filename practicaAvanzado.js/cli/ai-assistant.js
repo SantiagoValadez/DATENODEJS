@@ -7,6 +7,7 @@
 // 5.-Muestra respuestas con estilo.
 // 6.-Sigue funcionando en bucle hasta que el usuario lo detenga.#!/usr/bin/env node
 
+
 const {blue, green, red, yellow} = require('colorette') // importa modulos para dar colores al texto en la terminal por ejem: blue() y green()
 const minimist = require ('minimist') // Libreri que permite parsear argumentos que se pasan desde la terminal como donde archivo.js --name=Santiago
 const {prompt} = require ('inquirer').default // Importa el el metodo prompt desde la libreria inquirer, que permite mostrar inputs interactivos en la terminal
