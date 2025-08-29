@@ -1,5 +1,6 @@
 #!/usr/bin/env node -----> indica que ela rchivo sera ejecutado con node
 
+
 // 1.-Este script es un CLI interactivo que:
 // 2.-Pide una API key y nombre del usuario.
 // 3.-Inicia una conversación con Gemini.
