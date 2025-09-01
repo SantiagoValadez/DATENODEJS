@@ -2,6 +2,7 @@
 // shebang necesario para un cli. Le dice al sistema operativo que el script debe de ejecutarse utilizando node.js. Lo que permite que el aarchivo se ejecute
 // directamente dese la terminal como un comando.
 
+
 // importacion de lo modulos nativos de node
 // readline: permite leer entradas del usuario desde la temrinal
 // process argv: contien los argumentos con los que se ejecuto el script
