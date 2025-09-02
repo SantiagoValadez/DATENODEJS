@@ -51,6 +51,7 @@ signals.forEach(signal => {
 });
 
 
+
 // --------------> Anexos: <---------------
 
 // #!/usr/bin/env node-- Se debe de usar al inicio del archivo para que el sistema operativo sepa que debe usar Node.js para ejecutar este script.
