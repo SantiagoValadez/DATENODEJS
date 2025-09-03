@@ -37,7 +37,6 @@ rl.question('Cual es el numero: ', (number) =>{ // Se hace una pregunta al usuar
 // Se define un siguiente arreglo con señales del sistema opertivo. Estas señales pueden usarse para interrumpir procesos. Por ejeplo con ctrl + C
 const signals = ['SIGINT', 'SIGTERM', 'SIGURST1', 'SIGUSR2'];
 
-
 // Se registra un listener para cada señal si el proceso percibe alguna de esas señales
 // Se muestra un mensjae mostrando la señal recibida
 // Se cierra readline (por si estaba esperando respuesta del usuario)
